@@ -32,9 +32,12 @@ def retrieve(
     sparse = lexical_search(query, top_k=top_k * 2)
     hybrid = (
         rerank_rrf([dense, sparse], top_k=top_k)
-        if use_reranking else dense[:top_k]
+        if use_reranking
+        else dense[:top_k]
     )
 
+    # Fallback quyết định dựa trên cosine score gốc của dense search,
+    # KHÔNG dùng RRF score vì hai thang đo không so sánh được với nhau.
     best_dense_score = dense[0]["score"] if dense else 0.0
     if best_dense_score < score_threshold:
         try:
@@ -42,6 +45,7 @@ def retrieve(
             if fallback:
                 return fallback
         except Exception:
+            # PageIndex là service ngoài: lỗi ở đây không được crash pipeline.
             pass
     return hybrid[:top_k]
 

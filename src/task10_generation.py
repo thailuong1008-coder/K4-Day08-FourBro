@@ -24,7 +24,7 @@ TOP_K = 5
 TOP_P = 0.9
 TEMPERATURE = 0.3
 
-LLM_PROVIDER = os.getenv("LLM_PROVIDER", "openai")
+LLM_PROVIDER = os.getenv("LLM_PROVIDER", "gemini")
 LLM_MODEL = os.getenv("LLM_MODEL", "")
 
 SYSTEM_PROMPT = """Trả lời chỉ từ context được cung cấp.
@@ -32,65 +32,125 @@ Mỗi khẳng định phải có citation. Nếu thiếu evidence, hãy từ ch�
 
 
 def reorder_for_llm(chunks: list[dict]) -> list[dict]:
-    """Đưa chunks quan trọng về đầu và cuối context."""
-    # TODO: Implement document reordering.
-    #
-    # if len(chunks) <= 2:
-    #     return list(chunks)
-    # front = chunks[::2]
-    # back = chunks[1::2]
-    # return front + back[::-1]
-    raise NotImplementedError("Implement reorder_for_llm")
+    """Đưa chunks quan trọng về đầu và cuối context (giảm lost-in-the-middle).
+
+    Không mutate list đầu vào — trả về list mới. Chunks đến từ retrieve()
+    đã sort theo score giảm dần, nên "quan trọng nhất" = đầu danh sách gốc.
+    """
+    if len(chunks) <= 2:
+        return list(chunks)
+    front = chunks[::2]   # rank 1, 3, 5, ... đặt ở đầu context
+    back = chunks[1::2]   # rank 2, 4, 6, ... đặt ở cuối, đảo ngược
+    return front + back[::-1]
 
 
 def format_context(chunks: list[dict]) -> str:
-    """Tạo context có title và source label."""
-    # TODO: Format chunks để LLM tạo citation kiểm chứng được.
-    #
-    # parts = []
-    # for index, chunk in enumerate(chunks, 1):
-    #     metadata = chunk["metadata"]
-    #     parts.append(
-    #         f"[Document {index} | Title: {metadata['title']} | "
-    #         f"Source: {metadata['source']}]\n{chunk['content']}"
-    #     )
-    # return "\n\n---\n\n".join(parts)
-    raise NotImplementedError("Implement format_context")
+    """Tạo context có title/source để LLM sinh citation kiểm chứng được."""
+    parts = []
+    for index, chunk in enumerate(chunks, 1):
+        metadata = chunk["metadata"]
+        parts.append(
+            f"[Document {index} | Title: {metadata['title']} | "
+            f"Source: {metadata['source']}]\n{chunk['content']}"
+        )
+    return "\n\n---\n\n".join(parts)
+
+
+def _call_openai(system_prompt: str, user_message: str) -> str:
+    from openai import OpenAI
+
+    client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+    response = client.chat.completions.create(
+        model=LLM_MODEL or "gpt-4o-mini",
+        temperature=TEMPERATURE,
+        top_p=TOP_P,
+        messages=[
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": user_message},
+        ],
+    )
+    return response.choices[0].message.content or ""
+
+
+def _call_anthropic(system_prompt: str, user_message: str) -> str:
+    import anthropic
+
+    client = anthropic.Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
+    response = client.messages.create(
+        model=LLM_MODEL or "claude-sonnet-4-5",
+        max_tokens=1024,
+        temperature=TEMPERATURE,
+        top_p=TOP_P,
+        system=system_prompt,
+        messages=[{"role": "user", "content": user_message}],
+    )
+    return "".join(block.text for block in response.content if block.type == "text")
+
+
+def _call_gemini(system_prompt: str, user_message: str) -> str:
+    from google import genai
+    from google.genai import types
+
+    client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
+    response = client.models.generate_content(
+        model=LLM_MODEL or "gemini-2.0-flash",
+        contents=user_message,
+        config=types.GenerateContentConfig(
+            system_instruction=system_prompt,
+            temperature=TEMPERATURE,
+            top_p=TOP_P,
+        ),
+    )
+    return response.text or ""
 
 
 def call_llm(system_prompt: str, user_message: str) -> str:
-    """Gọi OpenAI, Gemini hoặc Anthropic theo cấu hình."""
-    # TODO: Dispatch theo LLM_PROVIDER.
-    #
-    # - openai    -> OPENAI_API_KEY
-    # - gemini    -> GEMINI_API_KEY
-    # - anthropic -> ANTHROPIC_API_KEY
-    #
-    # Dùng LLM_MODEL và trả về text thuần cho cả ba nhánh.
-    raise NotImplementedError("Implement call_llm")
+    """Gọi OpenAI, Gemini hoặc Anthropic theo LLM_PROVIDER trong .env."""
+    dispatch = {
+        "openai": _call_openai,
+        "anthropic": _call_anthropic,
+        "gemini": _call_gemini,
+    }
+    handler = dispatch.get(LLM_PROVIDER)
+    if handler is None:
+        raise ValueError(f"Unsupported LLM_PROVIDER: {LLM_PROVIDER!r}")
+    return handler(system_prompt, user_message)
+
+
+SAFE_REFUSAL = "Tôi không thể xác minh thông tin này từ nguồn hiện có."
 
 
 def generate_with_citation(query: str, top_k: int = TOP_K) -> dict:
-    """Trả về GenerationResult."""
-    # TODO: Implement end-to-end generation.
-    #
-    # chunks = retrieve(query, top_k=top_k)
-    # if not chunks:
-    #     return {
-    #         "answer": "Tôi không thể xác minh thông tin này từ nguồn hiện có.",
-    #         "sources": [],
-    #         "retrieval_source": "none",
-    #     }
-    # reordered = reorder_for_llm(chunks)
-    # context = format_context(reordered)
-    # user_message = f"Context:\n{context}\n\nQuestion: {query}"
-    # answer = call_llm(SYSTEM_PROMPT, user_message)
-    # return {
-    #     "answer": answer,
-    #     "sources": chunks,
-    #     "retrieval_source": chunks[0]["retrieval_method"],
-    # }
-    raise NotImplementedError("Implement generate_with_citation")
+    """Trả về GenerationResult. Không đủ evidence hoặc provider lỗi -> safe refusal."""
+    chunks = retrieve(query, top_k=top_k)
+    if not chunks:
+        return {
+            "answer": SAFE_REFUSAL,
+            "sources": [],
+            "retrieval_source": "none",
+        }
+
+    reordered = reorder_for_llm(chunks)
+    context = format_context(reordered)
+    user_message = f"Context:\n{context}\n\nQuestion: {query}"
+
+    try:
+        answer = call_llm(SYSTEM_PROMPT, user_message)
+    except Exception:
+        # Provider lỗi (key thiếu, timeout, rate limit...) -> không bịa,
+        # trả safe refusal nhưng vẫn giữ nguồn đã tìm được để debug/UI hiển thị.
+        answer = SAFE_REFUSAL
+
+    if not answer.strip():
+        answer = SAFE_REFUSAL
+
+    return {
+        "answer": answer,
+        "sources": chunks,
+        "retrieval_source": chunks[0]["retrieval_method"]
+        if chunks[0]["retrieval_method"] == "pageindex"
+        else "hybrid",
+    }
 
 
 if __name__ == "__main__":
