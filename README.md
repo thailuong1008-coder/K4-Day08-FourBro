@@ -10,17 +10,17 @@
 | Thành viên | Vai trò | Nhiệm vụ chính phụ trách | Trạng thái |
 | :--- | :--- | :--- | :---: |
 | **Thành viên 1** | **Data Engineer** | Phụ trách thu thập và chuẩn hóa dữ liệu. Thu thập tối thiểu 3 tài liệu PDF/DOCX và 5 trang/bài viết có nguồn rõ ràng, chuyển đổi dữ liệu sang Markdown, làm sạch dữ liệu và thực hiện chunking. Bảo đảm dữ liệu có metadata đầy đủ, ID ổn định, chunk không rỗng và sẵn sàng cho bước embedding và retrieval. | Hoàn thành |
-| **Thành viên 2** *(Tôi)* | **Retrieval Engineer** | **Phụ trách toàn bộ hệ thống tìm kiếm**. Thực hiện embedding, lưu trữ trên ChromaDB, xây dựng Dense Search, BM25 Lexical Search, Reciprocal Rank Fusion (RRF) và retrieval pipeline. Thực hiện calibrate threshold, xây dựng fallback và kiểm tra các yêu cầu về `SearchResult`, `top_k`, `score`, `id` và công thức RRF theo contract. | **Hoàn thành** |
+| **Thành viên 2** | **Retrieval Engineer** | **Phụ trách toàn bộ hệ thống tìm kiếm**. Thực hiện embedding, lưu trữ trên ChromaDB, xây dựng Dense Search, BM25 Lexical Search, Reciprocal Rank Fusion (RRF) và retrieval pipeline. Thực hiện calibrate threshold, xây dựng fallback và kiểm tra các yêu cầu về `SearchResult`, `top_k`, `score`, `id` và công thức RRF theo contract. | **Hoàn thành** |
 | **Thành viên 3** | **Generation / RAG Engineer** | Phụ trách phần xử lý sau retrieval và sinh câu trả lời. Xây dựng PageIndex/fallback provider, reorder chunks, format context, kết nối LLM, sinh câu trả lời có citation và xây dựng cơ chế safe refusal khi hệ thống không có đủ bằng chứng. Đảm bảo citation truy xuất được về đúng nguồn trong sources và không tự suy diễn ngoài dữ liệu. | Đang tích hợp |
 | **Thành viên 4** | **Product & Evaluation Engineer** | Phụ trách chatbot và đánh giá hệ thống. Hoàn thiện giao diện Streamlit, hiển thị câu trả lời, nguồn, retrieval method và score; xây dựng tối thiểu 15 câu Golden Q&A; chạy 4 metric gồm Faithfulness, Answer Relevance, Context Recall và Context Precision; thực hiện A/B giữa Dense-only và Hybrid + RRF; phân tích lỗi và hoàn thiện `RESULT.md`. | Đang tích hợp |
 
 ---
 
-## 🔍 Báo cáo chi tiết phần việc: Thành viên 2 – Retrieval Engineer
+## 🔍 Kiến trúc & Đặc tả Kỹ thuật: Module Retrieval Pipeline (Thành viên 2)
 
-> **Trách nhiệm trọng tâm**: Chịu trách nhiệm thiết kế, triển khai, hiệu chỉnh (calibrate) và kiểm thử toàn bộ hệ thống tìm kiếm đa tầng (**Hybrid Retrieval Pipeline**), kết hợp giữa ngữ nghĩa (Semantic Dense) và từ khóa chính xác (BM25 Lexical), đồng thời cung cấp cơ chế Fallback thông minh đảm bảo tuân thủ nghiêm ngặt các quy chuẩn giao tiếp (`docs/MODULE_CONTRACTS.md`).
+> **Mục tiêu module**: Thiết kế, triển khai, hiệu chỉnh (calibrate) và kiểm thử toàn bộ hệ thống tìm kiếm đa tầng (**Hybrid Retrieval Pipeline**), kết hợp giữa ngữ nghĩa (Semantic Dense) và từ khóa chính xác (BM25 Lexical), đồng thời cung cấp cơ chế Fallback thông minh đảm bảo tuân thủ nghiêm ngặt các quy chuẩn giao tiếp (`docs/MODULE_CONTRACTS.md`).
 
-### 1. Các module kỹ thuật trực tiếp đảm nhiệm
+### 1. Các module kỹ thuật thành phần
 
 #### 1.1. Embedding & ChromaDB Indexing (`src/task4_chunking_indexing.py` - phần Indexing)
 - **Model Embedding**: Lựa chọn mô hình đa ngôn ngữ hàng đầu **`BAAI/bge-m3`** (vector dimension: 1024), có khả năng nắm bắt ngữ nghĩa tiếng Việt vượt trội trong các tài liệu chính sách và giáo dục.
@@ -67,7 +67,7 @@
 
 ### 2. Tiêu chuẩn Hợp đồng dữ liệu (`SearchResult` Contract)
 
-Tất cả các hàm tìm kiếm của Thành viên 2 đều bảo đảm trả về danh sách các đối tượng tuân thủ 100% schema `SearchResult`:
+Tất cả các hàm tìm kiếm trong module Retrieval đều bảo đảm trả về danh sách các đối tượng tuân thủ 100% schema `SearchResult`:
 
 ```python
 {
@@ -93,7 +93,7 @@ Tất cả các hàm tìm kiếm của Thành viên 2 đều bảo đảm trả 
 
 ---
 
-### 3. Hướng dẫn chạy và Kiểm thử cho Module TV2
+### 3. Hướng dẫn chạy và Kiểm thử Module Retrieval (TV2)
 
 #### Chạy kiểm tra độc lập từng thành phần:
 ```bash
@@ -115,7 +115,7 @@ python -m src.task9_retrieval_pipeline
 
 #### Chạy kiểm thử tự động (Unit Test / Contract Test):
 ```bash
-# Chạy các test case riêng cho module Retrieval của TV2
+# Chạy các test case riêng cho module Retrieval
 pytest tests/test_contracts.py -k "semantic or lexical or rrf or retrieve" -v
 
 # Chạy toàn bộ suite test contract
@@ -124,7 +124,7 @@ pytest tests/test_contracts.py -q
 
 ---
 
-### 4. Bảng kiểm tra tiến độ hoàn thành (TV2 Checklist)
+### 4. Bảng kiểm tra tiến độ Module Retrieval (TV2 Checklist)
 
 - [x] Khởi tạo và kết nối ChromaDB với Cosine Distance space (`hnsw:space: "cosine"`).
 - [x] Cài đặt hàm trích xuất Dense Search với embedding đồng bộ `BAAI/bge-m3`.
