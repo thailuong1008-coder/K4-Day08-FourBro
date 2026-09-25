@@ -1,82 +1,164 @@
 [
-  {
-    "question": "Điểm chuẩn đại học Bách Khoa Hà Nội năm 2024 là bao nhiêu?",
-    "expected_answer": "Điểm chuẩn Đại học Bách Khoa Hà Nội năm 2024 dao động từ 24.5 đến 29.04 điểm tùy theo ngành đào tạo. Ngành Khoa học Máy tính có điểm chuẩn cao nhất là 29.04 điểm.",
-    "expected_context": "Điểm chuẩn Bách Khoa Hà Nội 2024, ngành Khoa học Máy tính, Công nghệ thông tin"
-  },
-  {
-    "question": "Có những phương thức xét tuyển đại học nào trong năm 2024?",
-    "expected_answer": "Năm 2024, các trường đại học áp dụng nhiều phương thức xét tuyển bao gồm: xét điểm thi tốt nghiệp THPT, xét học bạ THPT, xét tuyển thẳng, thi đánh giá năng lực, xét tuyển kết hợp, và xét tuyển bằng chứng chỉ quốc tế (IELTS, SAT, ACT).",
-    "expected_context": "phương thức xét tuyển đại học 2024, điểm thi THPT, học bạ, đánh giá năng lực"
-  },
-  {
-    "question": "Quy trình đăng ký xét tuyển đại học trực tuyến như thế nào?",
-    "expected_answer": "Quy trình đăng ký xét tuyển trực tuyến gồm các bước: tạo tài khoản trên hệ thống, đăng nhập, điền thông tin cá nhân, chọn nguyện vọng xét tuyển, tải lên giấy tờ cần thiết, và xác nhận đăng ký. Thí sinh cần hoàn thành trước thời hạn quy định.",
-    "expected_context": "đăng ký xét tuyển trực tuyến, hệ thống xét tuyển, nguyện vọng"
-  },
-  {
-    "question": "Học phí đại học công lập năm 2024 là bao nhiêu?",
-    "expected_answer": "Học phí đại học công lập năm 2024-2025 dao động từ 12-50 triệu đồng/năm tùy theo nhóm ngành và chương trình đào tạo. Các chương trình chất lượng cao, chương trình quốc tế có mức học phí cao hơn.",
-    "expected_context": "học phí đại học 2024, công lập, nhóm ngành, chương trình đào tạo"
-  },
-  {
-    "question": "Chính sách ưu tiên trong tuyển sinh đại học áp dụng cho những đối tượng nào?",
-    "expected_answer": "Chính sách ưu tiên áp dụng cho các đối tượng: con thương binh liệt sĩ, người dân tộc thiểu số, học sinh vùng khó khăn, học sinh đạt giải quốc gia và quốc tế, con em gia đình có công với cách mạng.",
-    "expected_context": "chính sách ưu tiên tuyển sinh, đối tượng ưu tiên, khu vực ưu tiên"
-  },
-  {
-    "question": "Điểm ưu tiên khu vực được tính như thế nào?",
-    "expected_answer": "Điểm ưu tiên khu vực gồm: KV1 được cộng 0.75 điểm, KV2-NT được cộng 0.5 điểm, KV2 được cộng 0.25 điểm, KV3 không được cộng điểm. Điểm ưu tiên khu vực chỉ áp dụng khi xét tuyển bằng điểm thi THPT.",
-    "expected_context": "điểm ưu tiên khu vực, KV1, KV2, KV2-NT, KV3"
-  },
-  {
-    "question": "Thí sinh có thể đăng ký bao nhiêu nguyện vọng xét tuyển?",
-    "expected_answer": "Thí sinh được đăng ký không giới hạn số nguyện vọng xét tuyển. Các nguyện vọng được sắp xếp theo thứ tự ưu tiên từ cao đến thấp, và hệ thống sẽ xét theo thứ tự.",
-    "expected_context": "số nguyện vọng xét tuyển, thứ tự ưu tiên nguyện vọng"
-  },
-  {
-    "question": "Xu hướng chọn ngành đại học năm 2024 như thế nào?",
-    "expected_answer": "Năm 2024, các ngành Công nghệ thông tin, Trí tuệ nhân tạo, Khoa học dữ liệu, Y khoa, Dược học vẫn là những ngành hot nhất. Xu hướng mới nổi gồm Công nghệ bán dẫn, Năng lượng tái tạo, và Logistics.",
-    "expected_context": "xu hướng chọn ngành 2024, ngành hot, CNTT, AI, y khoa"
-  },
-  {
-    "question": "Các trường đại học top có những tiêu chí xét tuyển gì?",
-    "expected_answer": "Các trường top thường xét tuyển dựa trên nhiều tiêu chí: điểm thi THPT, kết quả học bạ, chứng chỉ ngoại ngữ quốc tế, bài luận cá nhân, phỏng vấn, và thành tích hoạt động ngoại khóa.",
-    "expected_context": "tiêu chí xét tuyển trường top, đại học hàng đầu, yêu cầu tuyển sinh"
-  },
-  {
-    "question": "Thời gian đăng ký xét tuyển đại học năm 2024 khi nào?",
-    "expected_answer": "Lịch đăng ký xét tuyển đại học 2024: đăng ký nguyện vọng bắt đầu từ tháng 7, kết thúc cuối tháng 7. Kết quả xét tuyển được công bố vào tháng 8. Thí sinh có thể điều chỉnh nguyện vọng trong thời gian quy định.",
-    "expected_context": "lịch đăng ký xét tuyển 2024, thời hạn, điều chỉnh nguyện vọng"
-  },
-  {
-    "question": "Điều kiện xét tuyển thẳng vào đại học là gì?",
-    "expected_answer": "Điều kiện xét tuyển thẳng bao gồm: thí sinh đạt giải Nhất, Nhì, Ba quốc gia, giải quốc tế trong các kỳ thi Olympic, thí sinh có thành tích đặc biệt xuất sắc trong học tập và nghiên cứu khoa học.",
-    "expected_context": "xét tuyển thẳng, giải quốc gia, Olympic quốc tế, thành tích đặc biệt"
-  },
-  {
-    "question": "Chương trình đào tạo chất lượng cao khác gì so với chương trình đại trà?",
-    "expected_answer": "Chương trình chất lượng cao có giảng viên quốc tế, giáo trình song ngữ, lớp học nhỏ, cơ sở vật chất hiện đại, cơ hội thực tập tại doanh nghiệp hàng đầu. Tuy nhiên học phí cao hơn, thường từ 40-80 triệu đồng/năm.",
-    "expected_context": "chương trình chất lượng cao, so sánh đại trà, học phí CLC"
-  },
-  {
-    "question": "Làm thế nào để tra cứu kết quả xét tuyển đại học?",
-    "expected_answer": "Thí sinh tra cứu kết quả xét tuyển qua hệ thống trực tuyến của Bộ GD&ĐT, website của trường đại học đã đăng ký, hoặc qua tin nhắn SMS. Kết quả được công bố theo đợt xét tuyển.",
-    "expected_context": "tra cứu kết quả xét tuyển, hệ thống trực tuyến, Bộ GD&ĐT"
-  },
-  {
-    "question": "Sinh viên có thể được miễn giảm học phí không?",
-    "expected_answer": "Sinh viên thuộc diện chính sách, hộ nghèo, hộ cận nghèo, dân tộc thiểu số vùng đặc biệt khó khăn được miễn hoặc giảm học phí. Ngoài ra có nhiều chương trình học bổng từ nhà trường và doanh nghiệp.",
-    "expected_context": "miễn giảm học phí, chính sách, hộ nghèo, học bổng"
-  },
-  {
-    "question": "Kỳ thi đánh giá năng lực khác gì so với kỳ thi THPT quốc gia?",
-    "expected_answer": "Kỳ thi đánh giá năng lực do các đại học tự tổ chức, đánh giá tư duy logic, giải quyết vấn đề, kiến thức tổng hợp. Khác với kỳ thi THPT chỉ kiểm tra kiến thức từng môn, đánh giá năng lực kiểm tra năng lực toàn diện.",
-    "expected_context": "đánh giá năng lực, ĐHQG, thi THPT, so sánh phương thức"
-  },
-  {
-    "question": "Quy định về chuyển ngành trong đại học như thế nào?",
-    "expected_answer": "Sinh viên có thể chuyển ngành sau khi hoàn thành ít nhất 1 học kỳ, đạt điểm trung bình tích lũy từ 7.0 trở lên, không bị kỷ luật, và ngành muốn chuyển còn chỉ tiêu. Mỗi sinh viên chỉ được chuyển ngành một lần.",
-    "expected_context": "chuyển ngành, điều kiện chuyển ngành, quy định sinh viên"
-  }
+{
+"id": "q01",
+"question": "Đại học Bách khoa Hà Nội năm 2024 có những phương thức tuyển sinh nào?",
+"expected_answer": "Năm 2024, Đại học Bách khoa Hà Nội có ba phương thức tuyển sinh chính: xét tuyển tài năng (XTTN), xét tuyển dựa trên kết quả Kỳ thi Đánh giá tư duy (ĐGTD) năm 2023 và 2024, và xét tuyển dựa trên kết quả thi tốt nghiệp THPT năm 2024. Ngoài ra có phương thức dành cho một số trường hợp đặc biệt như diện cử tuyển, lưu học sinh hiệp định và học sinh học tập tại các trường THPT ở nước ngoài.",
+"expected_context": "Các phương thức tuyển sinh năm 2024 của Đại học Bách khoa Hà Nội gồm xét tuyển tài năng, xét tuyển theo kết quả Đánh giá tư duy và xét tuyển theo kết quả thi tốt nghiệp THPT.",
+"source_reference": "data/standardized/legal/hust-de-an-tuyen-sinh-2024.md:1283-1292",
+"category": "phuong_thuc_xet_tuyen",
+"difficulty": "easy"
+},
+{
+"id": "q02",
+"question": "Điều kiện xét tuyển theo hồ sơ năng lực kết hợp phỏng vấn năm 2024 của Đại học Bách khoa Hà Nội là gì?",
+"expected_answer": "Thí sinh phải tốt nghiệp THPT cùng năm xét tuyển, không thuộc diện tốt nghiệp hệ Giáo dục thường xuyên, và có điểm trung bình chung học tập các môn văn hóa theo quy định của Đại học Bách khoa Hà Nội từ 8,0 trở lên trong từng năm lớp 10, lớp 11 và học kỳ I lớp 12. Ngoài ra, thí sinh phải đáp ứng các điều kiện về thành tích và các yêu cầu bổ sung của phương thức xét tuyển hồ sơ năng lực kết hợp phỏng vấn.",
+"expected_context": "Xét tuyển tài năng theo hồ sơ năng lực kết hợp phỏng vấn; điều kiện tốt nghiệp THPT cùng năm và điểm trung bình chung các môn văn hóa từ 8.0.",
+"source_reference": "data/standardized/legal/hust-de-an-tuyen-sinh-2024.md:1310-1335",
+"category": "phuong_thuc_xet_tuyen",
+"difficulty": "medium"
+},
+{
+"id": "q03",
+"question": "Đại học Bách khoa Hà Nội năm 2024 chấp nhận những chứng chỉ quốc tế nào trong xét tuyển tài năng?",
+"expected_answer": "Đại học Bách khoa Hà Nội sử dụng các chứng chỉ quốc tế SAT, ACT, A-Level, AP và IB trong một nhánh của phương thức xét tuyển tài năng. Thí sinh cũng phải đáp ứng điều kiện về kết quả học tập THPT theo quy định.",
+"expected_context": "Xét tuyển tài năng dựa trên các chứng chỉ quốc tế SAT, ACT, A-Level, AP và IB.",
+"source_reference": "data/standardized/legal/hust-de-an-tuyen-sinh-2024.md:1302-1309",
+"category": "phuong_thuc_xet_tuyen",
+"difficulty": "easy"
+},
+{
+"id": "q04",
+"question": "Thời gian đăng ký xét tuyển tài năng năm 2024 của Đại học Bách khoa Hà Nội là khi nào?",
+"expected_answer": "Thời gian đăng ký xét tuyển tài năng phụ thuộc vào từng nhánh. Đối với xét tuyển thẳng theo quy định của Bộ Giáo dục và Đào tạo, thời gian đăng ký trực tuyến trên hệ thống ts-hn.hust.edu.vn là từ ngày 15/04/2024 đến ngày 30/06/2024. Đối với xét tuyển dựa trên chứng chỉ quốc tế, thời gian đăng ký là từ ngày 15/04/2024 đến ngày 20/05/2024. Đối với xét tuyển theo hồ sơ năng lực kết hợp phỏng vấn, thời gian đăng ký là từ ngày 15/04/2024 đến ngày 04/05/2024.",
+"expected_context": "Thời gian đăng ký xét tuyển tài năng năm 2024; các mốc 15/04-30/06, 15/04-20/05 và 15/04-04/05 tùy nhánh xét tuyển.",
+"source_reference": "data/standardized/legal/hust-de-an-tuyen-sinh-2024.md:1422-1428; 1435-1441; 1473-1477",
+"category": "phuong_thuc_xet_tuyen",
+"difficulty": "hard"
+},
+{
+"id": "q05",
+"question": "Những thí sinh nào có thể được xét tuyển thẳng theo phương thức xét tuyển tài năng năm 2024?",
+"expected_answer": "Theo phương thức xét tuyển tài năng, thí sinh tốt nghiệp THPT cùng năm xét tuyển và đạt thành tích cao trong Kỳ thi chọn học sinh giỏi quốc gia THPT hoặc đạt thành tích trong các cuộc thi khoa học kỹ thuật theo quy định có thể thuộc diện xét tuyển thẳng. Việc xét tuyển thực hiện theo các quy định tuyển sinh tương ứng của Bộ Giáo dục và Đào tạo và Đại học Bách khoa Hà Nội.",
+"expected_context": "Xét tuyển tài năng; xét tuyển thẳng học sinh giỏi theo quy định của Bộ Giáo dục và Đào tạo; thành tích học sinh giỏi quốc gia và khoa học kỹ thuật.",
+"source_reference": "data/standardized/legal/hust-de-an-tuyen-sinh-2024.md:1293-1301",
+"category": "phuong_thuc_xet_tuyen",
+"difficulty": "medium"
+},
+{
+"id": "q06",
+"question": "Tổng chỉ tiêu tuyển sinh dự kiến của Đại học Bách khoa Hà Nội năm 2024 là bao nhiêu?",
+"expected_answer": "Tổng chỉ tiêu tuyển sinh dự kiến của Đại học Bách khoa Hà Nội năm 2024 là 9.260 sinh viên.",
+"expected_context": "Tổng chỉ tiêu tuyển sinh đại học năm 2024 của Đại học Bách khoa Hà Nội: 9.260 sinh viên.",
+"source_reference": "data/standardized/news/hust-thong-tin-tuyen-sinh-2024.md",
+"category": "chi_tieu",
+"difficulty": "easy"
+},
+{
+"id": "q07",
+"question": "Ngành Kỹ thuật Máy tính (IT1) có bao nhiêu chỉ tiêu tuyển sinh năm 2024?",
+"expected_answer": "Năm 2024, chương trình Kỹ thuật Máy tính (mã IT1) của Đại học Bách khoa Hà Nội có 300 chỉ tiêu.",
+"expected_context": "Bảng chỉ tiêu tuyển sinh năm 2024; Kỹ thuật Máy tính IT1; chỉ tiêu 300.",
+"source_reference": "data/standardized/news/hust-thong-tin-tuyen-sinh-2024.md:Table 3 - IT1",
+"category": "chi_tieu",
+"difficulty": "easy"
+},
+{
+"id": "q08",
+"question": "Năm 2024, Đại học Bách khoa Hà Nội xét tuyển theo những nhóm phương thức nào liên quan đến học tập THPT?",
+"expected_answer": "Trong thông tin tuyển sinh năm 2024, Đại học Bách khoa Hà Nội có nhánh xét tuyển tài năng dựa trên kết quả học tập THPT kết hợp với các điều kiện tương ứng, trong đó có xét tuyển dựa trên chứng chỉ quốc tế và xét tuyển theo hồ sơ năng lực kết hợp phỏng vấn. Ngoài ra, quy chế tuyển sinh mô tả phương thức xét tuyển theo kết quả học tập THPT và chứng chỉ quốc tế với điểm xét được tính từ kết quả học tập các môn theo tổ hợp quy định và có tính điểm ưu tiên theo quy định.",
+"expected_context": "Kết quả học tập THPT, chứng chỉ quốc tế, hồ sơ năng lực và phỏng vấn trong các phương thức tuyển sinh.",
+"source_reference": "data/standardized/legal/hust-quy-che-tuyen-sinh-2024.md:597-607; data/standardized/legal/hust-de-an-tuyen-sinh-2024.md:1292-1335",
+"category": "phuong_thuc_xet_tuyen",
+"difficulty": "hard"
+},
+{
+"id": "q09",
+"question": "Điểm xét tuyển theo kết quả Kỳ thi Đánh giá tư duy năm 2024 được xác định như thế nào?",
+"expected_answer": "Theo thông tin công bố điểm chuẩn năm 2024, điểm xét đối với phương thức sử dụng kết quả thi Đánh giá tư duy được xác định bằng điểm thi ĐGTD cộng điểm ưu tiên và điểm thưởng. Điểm thi ĐGTD được lấy là điểm cao nhất trong các lần thi ĐGTD năm 2023 và năm 2024; điểm ưu tiên đối tượng và khu vực được quy đổi về thang điểm 100.",
+"expected_context": "Công thức điểm xét tuyển theo Đánh giá tư duy; điểm thi ĐGTD; điểm ưu tiên; điểm thưởng; thang điểm 100.",
+"source_reference": "data/standardized/news/hust-diem-chuan-2024.md:26",
+"category": "diem_chuan",
+"difficulty": "medium"
+},
+{
+"id": "q10",
+"question": "Điểm chuẩn ngành Kỹ thuật Máy tính (IT1) của Đại học Bách khoa Hà Nội năm 2024 theo phương thức Đánh giá tư duy là bao nhiêu?",
+"expected_answer": "Điểm chuẩn của ngành Kỹ thuật Máy tính (IT1) năm 2024 theo phương thức Đánh giá tư duy là 83,82 điểm.",
+"expected_context": "Điểm chuẩn tuyển sinh năm 2024; ngành Kỹ thuật Máy tính IT1; điểm chuẩn 83.82 theo thang điểm Đánh giá tư duy.",
+"source_reference": "data/standardized/news/hust-diem-chuan-2024.md; data/standardized/legal/hust-de-an-tuyen-sinh-2024.md:340-344",
+"category": "diem_chuan",
+"difficulty": "easy"
+},
+{
+"id": "q11",
+"question": "Ngành hoặc chương trình nào có điểm chuẩn cao nhất của Đại học Bách khoa Hà Nội năm 2024 theo phương thức Đánh giá tư duy?",
+"expected_answer": "Theo bảng điểm chuẩn năm 2024, Kỹ thuật Máy tính (IT1) có mức điểm chuẩn cao nhất là 83,82 điểm theo thang điểm Đánh giá tư duy.",
+"expected_context": "Bảng điểm chuẩn Đại học Bách khoa Hà Nội năm 2024; IT1; mức 83.82.",
+"source_reference": "data/standardized/news/hust-diem-chuan-2024.md",
+"category": "diem_chuan",
+"difficulty": "medium"
+},
+{
+"id": "q12",
+"question": "Điểm chuẩn IT-E10 của Đại học Bách khoa Hà Nội năm 2023 là bao nhiêu?",
+"expected_answer": "Năm 2023, chương trình IT-E10 có điểm chuẩn 83,97 điểm theo bảng điểm chuẩn được Đại học Bách khoa Hà Nội công bố.",
+"expected_context": "Điểm chuẩn hai năm gần nhất; IT-E10; năm 2023; 83.97.",
+"source_reference": "data/standardized/legal/hust-de-an-tuyen-sinh-2024.md:340-344; data/standardized/news/hust-diem-chuan-2024.md",
+"category": "diem_chuan",
+"difficulty": "easy"
+},
+{
+"id": "q13",
+"question": "Học phí chương trình đào tạo chuẩn của Đại học Bách khoa Hà Nội năm học 2024-2025 là bao nhiêu?",
+"expected_answer": "Theo đề án tuyển sinh năm 2024, học phí dự kiến của các chương trình đào tạo chuẩn trong năm học 2024-2025 khoảng 24 đến 30 triệu đồng mỗi năm, tùy theo ngành đào tạo.",
+"expected_context": "Học phí dự kiến năm học 2024-2025; chương trình đào tạo chuẩn; 24-30 triệu đồng/năm.",
+"source_reference": "data/standardized/legal/hust-de-an-tuyen-sinh-2024.md:1579-Table 9",
+"category": "hoc_phi",
+"difficulty": "easy"
+},
+{
+"id": "q14",
+"question": "Học phí chương trình IT-E10 Khoa học Dữ liệu và Trí tuệ nhân tạo năm học 2024-2025 là bao nhiêu?",
+"expected_answer": "Học phí dự kiến của chương trình IT-E10 - Khoa học Dữ liệu và Trí tuệ nhân tạo trong năm học 2024-2025 là khoảng 64 đến 67 triệu đồng mỗi năm.",
+"expected_context": "Bảng học phí năm học 2024-2025; IT-E10 - Khoa học Dữ liệu và Trí tuệ nhân tạo; 64-67 triệu đồng/năm.",
+"source_reference": "data/standardized/legal/hust-de-an-tuyen-sinh-2024.md:1579-Table 10",
+"category": "hoc_phi",
+"difficulty": "easy"
+},
+{
+"id": "q15",
+"question": "Học phí của Đại học Bách khoa Hà Nội có thể tăng tối đa bao nhiêu phần trăm mỗi năm?",
+"expected_answer": "Theo đề án tuyển sinh năm 2024, học phí có thể được điều chỉnh trong các năm học tiếp theo nhưng mức tăng không quá 10% mỗi năm.",
+"expected_context": "Quy định điều chỉnh học phí các năm học tiếp theo; mức tăng học phí không quá 10% mỗi năm.",
+"source_reference": "data/standardized/legal/hust-de-an-tuyen-sinh-2024.md:1579-1793",
+"category": "hoc_phi",
+"difficulty": "easy"
+},
+{
+"id": "q16",
+"question": "Đại học Bách khoa Hà Nội năm 2024 có những chính sách học bổng nào được công bố?",
+"expected_answer": "Thông tin tuyển sinh của Đại học Bách khoa Hà Nội nêu các chương trình học bổng gồm học bổng khuyến khích học tập, học bổng Trần Đại Nghĩa dành cho sinh viên có hoàn cảnh khó khăn và các học bổng do doanh nghiệp tài trợ.",
+"expected_context": "Chính sách học bổng năm học 2023-2024; học bổng khuyến khích học tập; Trần Đại Nghĩa; học bổng doanh nghiệp.",
+"source_reference": "data/standardized/news/hust-diem-chuan-2024.md",
+"category": "hoc_phi",
+"difficulty": "medium"
+},
+{
+"id": "q17",
+"question": "Điểm ưu tiên khu vực và đối tượng có được tính khi xét tuyển vào Đại học Bách khoa Hà Nội năm 2024 không?",
+"expected_answer": "Có. Theo quy định tuyển sinh, điểm xét tuyển theo Đánh giá tư duy có tính điểm ưu tiên đối tượng và khu vực theo quy định của Bộ Giáo dục và Đào tạo, với điểm ưu tiên được quy đổi về thang điểm của bài thi Đánh giá tư duy. Đối với xét tuyển theo kết quả học tập THPT, điểm xét cũng có tính điểm ưu tiên khu vực và đối tượng theo quy định.",
+"expected_context": "Điểm ưu tiên đối tượng và khu vực trong xét tuyển; quy đổi điểm ưu tiên theo thang điểm Đánh giá tư duy; xét tuyển theo kết quả học tập THPT.",
+"source_reference": "data/standardized/legal/hust-quy-che-tuyen-sinh-2024.md:591-602; data/standardized/news/hust-diem-chuan-2024.md:26",
+"category": "phuong_thuc_xet_tuyen",
+"difficulty": "medium"
+},
+{
+"id": "q18",
+"question": "Trường có mua bán ma túy trong khuôn viên không?",
+"expected_answer": "Không có thông tin liên quan trong dữ liệu tuyển sinh. Đây là câu hỏi ngoài phạm vi dữ liệu và không có evidence để trả lời. Hệ thống nên từ chối trả lời hoặc thông báo rằng không tìm thấy thông tin phù hợp trong nguồn dữ liệu tuyển sinh.",
+"expected_context": "Không có context phù hợp trong corpus tuyển sinh; câu hỏi ngoài phạm vi.",
+"source_reference": "N/A - out-of-scope test case",
+"category": "adversarial",
+"difficulty": "adversarial"
+}
 ]

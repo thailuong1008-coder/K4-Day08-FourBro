@@ -186,17 +186,23 @@ def chunk_documents(documents: list[dict]) -> list[dict]:
     Dùng RecursiveCharacterTextSplitter với separator phù hợp
     cho văn bản tiếng Việt. ID ổn định: "{doc_id}::chunk-{index}".
     """
-    from langchain_text_splitters import RecursiveCharacterTextSplitter
+    try:
+        from langchain_text_splitters import RecursiveCharacterTextSplitter
 
-    splitter = RecursiveCharacterTextSplitter(
-        chunk_size=CHUNK_SIZE,
-        chunk_overlap=CHUNK_OVERLAP,
-        separators=["\n\n", "\n", ". ", ", ", " ", ""],
-    )
+        splitter = RecursiveCharacterTextSplitter(
+            chunk_size=CHUNK_SIZE,
+            chunk_overlap=CHUNK_OVERLAP,
+            separators=["\n\n", "\n", ". ", ", ", " ", ""],
+        )
+        split_fn = splitter.split_text
+    except ImportError:
+        def split_fn(text: str) -> list[str]:
+            step = max(1, CHUNK_SIZE - CHUNK_OVERLAP)
+            return [text[i : i + CHUNK_SIZE] for i in range(0, len(text), step)] if text else []
 
     chunks = []
     for document in documents:
-        texts = splitter.split_text(document["content"])
+        texts = split_fn(document["content"])
         for index, text in enumerate(texts):
             chunks.append({
                 "id": f"{document['id']}::chunk-{index}",

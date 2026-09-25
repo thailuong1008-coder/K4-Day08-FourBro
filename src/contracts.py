@@ -1,8 +1,8 @@
 from typing import Literal, TypedDict
 
 
-RetrievalMethod = Literal["dense", "bm25", "hybrid", "pageindex"]
-RetrievalSource = Literal["hybrid", "pageindex", "none"]
+RetrievalMethod = Literal["dense", "bm25", "hybrid", "pageindex", "gemini_fallback"]
+RetrievalSource = Literal["hybrid", "pageindex", "gemini_fallback", "none"]
 
 
 class DocumentMetadata(TypedDict):
@@ -86,7 +86,7 @@ def validate_search_results(
 
     ids: list[str] = []
     scores: list[float] = []
-    valid_methods = {"dense", "bm25", "hybrid", "pageindex"}
+    valid_methods = {"dense", "bm25", "hybrid", "pageindex", "gemini_fallback"}
     for item in results:
         validate_document(item, require_chunk=True)
         score = item.get("score")
@@ -113,5 +113,10 @@ def validate_generation_result(result: object) -> None:
     if not isinstance(result.get("answer"), str) or not result["answer"].strip():
         raise ValueError("generation answer must be a non-empty string")
     validate_search_results(result.get("sources"))
-    if result.get("retrieval_source") not in {"hybrid", "pageindex", "none"}:
+    if result.get("retrieval_source") not in {
+        "hybrid",
+        "pageindex",
+        "gemini_fallback",
+        "none",
+    }:
         raise ValueError("generation retrieval_source is invalid")

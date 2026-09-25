@@ -144,12 +144,11 @@ def generate_with_citation(query: str, top_k: int = TOP_K) -> dict:
     if not answer.strip():
         answer = SAFE_REFUSAL
 
+    retrieval_method = chunks[0].get("retrieval_method", "hybrid") if chunks else "none"
     return {
         "answer": answer,
         "sources": chunks,
-        "retrieval_source": chunks[0]["retrieval_method"]
-        if chunks[0]["retrieval_method"] == "pageindex"
-        else "hybrid",
+        "retrieval_source": retrieval_method if retrieval_method in {"pageindex", "gemini_fallback"} else "hybrid",
     }
 
 

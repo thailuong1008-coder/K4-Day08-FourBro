@@ -15,6 +15,8 @@ import os
 import time
 from pathlib import Path
 
+from dotenv import load_dotenv
+
 try:
     from pageindex import PageIndexAPIError, PageIndexClient
 except ImportError:
